@@ -3,6 +3,7 @@
 
 // Tokens are base64url: letters, digits, '-' and '_' (a real token looks like cvt_CnrVdPdabGmasPxvZ5BY-AzRDMGcmYnh).
 const TOKEN_RE = /^cvt_[A-Za-z0-9_-]{16,64}$/;
+const DEFAULT_TIMEOUT_MS = 5000;
 
 /** A plain https origin (or http on localhost for local testing), without path, credentials or query; otherwise null. */
 export function normalizeOrigin(value) {
