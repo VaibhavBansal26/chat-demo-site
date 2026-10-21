@@ -18,6 +18,9 @@ test("normalizeOrigin rejects unsafe or malformed values", () => {
 
 test("validToken accepts widget tokens only", () => {
   assert.equal(validToken(TOKEN), true);
+  // base64url characters occur in real tokens: a '-' or '_' must not fail the build
+  assert.equal(validToken("cvt_CnrVdPdabGmasPxvZ5BY-AzRDMGcmYnh"), true);
+  assert.equal(validToken("cvt_" + "a_b-".repeat(8)), true);
   for (const bad of ["", "cvt_", "cvt_short", "abc_" + "a".repeat(32), "cvt_" + "a".repeat(80), "cvt_ " + "a".repeat(32), "cvt_<script>alert(1)</script>", null, 7]) {
     assert.equal(validToken(bad), false, String(bad));
   }

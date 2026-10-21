@@ -1,7 +1,8 @@
 // Loads the Conversations chat widget on this page from the settings in config.js.
 // Pure helpers are exported for tests; the DOM part only runs in a browser.
 
-const TOKEN_RE = /^cvt_[A-Za-z0-9]{16,64}$/;
+// Tokens are base64url: letters, digits, '-' and '_' (a real token looks like cvt_CnrVdPdabGmasPxvZ5BY-AzRDMGcmYnh).
+const TOKEN_RE = /^cvt_[A-Za-z0-9_-]{16,64}$/;
 
 /** A plain https origin (or http on localhost for local testing), without path, credentials or query; otherwise null. */
 export function normalizeOrigin(value) {
