@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Acme Studio: a website with live chat</title>
+    <meta name="description" content="A demo website hosted on GitHub Pages with a live support chat widget." />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="config.js"></script>
+    <script type="module" src="src/widget.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="bar">
+      <span class="brand">Acme Studio</span>
+      <nav aria-label="Primary"><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav>
+    </header>
+
+    <p id="chat-status" class="notice" role="status" hidden></p>
+
+    <main id="main">
+      <section class="hero">
+        <p class="eyebrow">Design, build, launch</p>
+        <h1>Websites that answer your customers, in real time.</h1>
+        <p class="lead">Questions about a project? Use the chat bubble in the corner. A real person on our support team replies from a shared inbox, usually within a few minutes.</p>
+        <div class="actions"><a class="btn primary" href="#pricing">See pricing</a><a class="btn" href="#contact">Other ways to reach us</a></div>
+      </section>
+
+      <section id="services" class="grid" aria-labelledby="services-h">
+        <h2 id="services-h" class="span">What we do</h2>
+        <article class="card"><h3>Landing pages</h3><p>Fast, accessible pages that turn visitors into leads, built to be edited by your own team.</p></article>
+        <article class="card"><h3>Online shops</h3><p>Simple product pages and a checkout that works on every phone, with clear order emails.</p></article>
+        <article class="card"><h3>Care plans</h3><p>Hosting, updates and fixes for one monthly price, so nothing breaks while you sleep.</p></article>
+      </section>
+
+      <section id="pricing" class="grid" aria-labelledby="pricing-h">
+        <h2 id="pricing-h" class="span">Pricing</h2>
+        <article class="card"><h3>Starter</h3><p class="price">$490</p><p>One landing page, a contact form, two rounds of changes.</p></article>
+        <article class="card featured"><h3>Growth</h3><p class="price">$1,490</p><p>Up to five pages, blog, analytics setup and a launch checklist.</p></article>
+        <article class="card"><h3>Care plan</h3><p class="price">$79<span>/mo</span></p><p>Updates, backups and monitoring for an existing site.</p></article>
+        <p class="span small">Demo prices for illustration only.</p>
+      </section>
+
+      <section id="faq" aria-labelledby="faq-h" class="stack">
+        <h2 id="faq-h">Questions we get a lot</h2>
+        <details><summary>How fast do you reply to chat?</summary><p>Usually within a few minutes during office hours. Outside them, the chat takes your message and we answer the next working day.</p></details>
+        <details><summary>Can I talk to someone about a quote?</summary><p>Yes. Open the chat bubble, tell us about your project and we will reply with next steps.</p></details>
+        <details><summary>Do I need an account to chat?</summary><p>No. The chat asks only for what the team has chosen to collect, such as a name or email.</p></details>
+      </section>
+
+      <section id="contact" class="stack" aria-labelledby="contact-h">
+        <h2 id="contact-h">Contact</h2>
+        <p>The fastest way is the chat bubble at the bottom right of this page.</p>
+      </section>
+    </main>
+
+    <footer><p>&copy; <span id="year"></span> Acme Studio. A demo site: the chat connects to a test support inbox.</p></footer>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  </body>
+</html>
