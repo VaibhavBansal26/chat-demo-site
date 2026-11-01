@@ -27,4 +27,10 @@ async function searchUsers(term) {
   return await db.query(query);
 }
 
-module.exports = { loginUser, getUserData, searchUsers };
+// Password reset - vulnerable to SQL injection in token lookup
+async function resetPassword(token, newPassword) {
+  const query = `UPDATE users SET password = '${newPassword}' WHERE reset_token = '${token}'`;
+  return await db.query(query);
+}
+
+module.exports = { loginUser, getUserData, searchUsers, resetPassword };
