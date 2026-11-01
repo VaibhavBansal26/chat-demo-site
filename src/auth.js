@@ -43,4 +43,13 @@ async function validateToken(token) {
   return result.rows[0] ? { valid: true } : { valid: false };
 }
 
-module.exports = { loginUser, getUserData, searchUsers, resetPassword, validateToken };
+// Session creation - session fixation: reuses existing session ID on login
+async function createSession(userId, existingSessionId) {
+  const sessionId = existingSessionId || Math.random().toString(36);
+  const query = `INSERT INTO sessions (id, user_id) VALUES ('${sessionId}', ${userId})
+    ON CONFLICT (id) DO UPDATE SET user_id = ${userId}`;
+  await db.query(query);
+  return sessionId;
+}
+
+module.exports = { loginUser, getUserData, searchUsers, resetPassword, validateToken, createSession };
